@@ -6,7 +6,7 @@
 	<artifactId>JavaExample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Xboxc Java Example</name>
-	<description>Example of how to use xbxc in a Java application</description>
+	<description>Example of how to use xboxc in a Java application</description>
 	<dependencies>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
