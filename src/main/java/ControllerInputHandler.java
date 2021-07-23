@@ -1,12 +1,9 @@
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public interface ControllerInputHandler {
 
 	default public void handleSocketInput(String input) {
 
-		ControllerInputData data = getControllerInputData(input);
+		ControllerInputData data = ControllerInputDataMapper.getControllerInputData(input);
 		
 		// Here you add a call to a method for the controller items you use.
 		switch (data.getItem()) {
@@ -106,19 +103,6 @@ public interface ControllerInputHandler {
 		default:
 			break;
 		}
-	}
-
-	private static ControllerInputData getControllerInputData(String input) {
-		ObjectMapper objectMapper = new ObjectMapper();
-		ControllerInputData data = null;
-		try {
-			data = objectMapper.readValue(input, ControllerInputData.class);
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return data;
 	}
 
 }
