@@ -7,11 +7,11 @@ public class Server {
 
 	private ServerSocket serverSocket;
 
-	public void start() {
+	public void start(ControllerInputHandler inputHandler) {
 		try {
 			serverSocket = new ServerSocket(PORT);
 			while (true) {
-				new SocketInputHandler(serverSocket.accept()).start();
+				new SocketInputHandler(serverSocket.accept(), inputHandler).start();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -1,5 +1,6 @@
 public class Main {
 	public static void main(String[] args) {
-		new Server().start();
+		ControllerInputHandler inputHandler = new ControllerInputHandlerImpl();
+		new Server().start(inputHandler);
 	}
 }

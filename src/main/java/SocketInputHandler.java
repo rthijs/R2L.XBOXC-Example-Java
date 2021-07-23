@@ -7,9 +7,11 @@ public class SocketInputHandler extends Thread {
 
 	private Socket clientSocket;
 	private BufferedReader in;
+	private ControllerInputHandler inputHandler;
 
-	public SocketInputHandler(Socket socket) {
+	public SocketInputHandler(Socket socket, ControllerInputHandler inputHandler) {
 		this.clientSocket = socket;
+		this.inputHandler = inputHandler;
 	}
 
 	public void run() {
@@ -18,7 +20,7 @@ public class SocketInputHandler extends Thread {
 			String inputLine;
 			
 			while ((inputLine = in.readLine()) != null) {
-				ControllerInputHandler.handleSocketInput(inputLine);
+				inputHandler.handleSocketInput(inputLine);
 			}
 			
 			in.close();
